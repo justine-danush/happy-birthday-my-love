@@ -991,18 +991,19 @@ body.night-mode .glass-card {
     }
 
     .flip-card {
-        width: calc(50% - 15px);
-        max-width: none;
-        height: 180px;
+        width: 100%;
+        max-width: 320px;
+        height: 220px;
+        margin: 0 auto;
     }
 
     .flip-card-front h3 {
-        font-size: 1.2rem;
+        font-size: 1.6rem;
     }
 
     .flip-card-back p {
-        font-size: 0.85rem;
-        padding: 5px;
+        font-size: 1.1rem;
+        padding: 15px;
     }
 
     .envelope-wrapper {
