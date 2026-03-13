@@ -926,13 +926,13 @@ body.night-mode .glass-card {
     }
 
     .timeline-container::after {
-        left: 40px;
+        left: 31px;
+        /* Center of the icon (15px left + half width) */
     }
 
-    /* Center of the icon (15px left + 25px half width) */
     .timeline-item {
         width: 100%;
-        padding-left: 80px;
+        padding-left: 70px;
         padding-right: 15px;
         left: 0;
         text-align: left;
@@ -991,8 +991,18 @@ body.night-mode .glass-card {
     }
 
     .flip-card {
-        width: 100%;
-        max-width: 280px;
+        width: calc(50% - 15px);
+        max-width: none;
+        height: 180px;
+    }
+
+    .flip-card-front h3 {
+        font-size: 1.2rem;
+    }
+
+    .flip-card-back p {
+        font-size: 0.85rem;
+        padding: 5px;
     }
 
     .envelope-wrapper {
