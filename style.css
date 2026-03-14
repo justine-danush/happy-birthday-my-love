@@ -1,0 +1,1090 @@
+/* ===== VARIABLES & IMPORT ===== */
+:root {
+    --soft-pink: #ffb3c6;
+    --rose-gold: #b76e79;
+    --lavender: #e6e6fa;
+    --white: #ffffff;
+    --dark: #590d22;
+    --accent: #ff4d6d;
+    --glass-bg: rgba(255, 255, 255, 0.3);
+    --glass-border: rgba(255, 255, 255, 0.6);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: linear-gradient(-45deg, var(--soft-pink), #ffc2d1, #ffe5ec, var(--lavender));
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+    color: var(--dark);
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    transition: background 1s ease;
+}
+
+body.night-mode {
+    background: linear-gradient(-45deg, #0b0c10, #1f2833, #020b14);
+    color: var(--white);
+}
+
+@keyframes gradientBG {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+/* ===== TYPOGRAPHY ===== */
+.dancing-script {
+    font-family: 'Dancing Script', cursive;
+}
+
+.great-vibes {
+    font-family: 'Great Vibes', cursive;
+}
+
+.poppins-text {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+.title-text {
+    font-size: 3.5rem;
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--dark);
+    text-shadow: 2px 2px 10px rgba(255, 255, 255, 0.8);
+}
+
+.glowing-text {
+    font-size: 4rem;
+    text-align: center;
+    color: var(--accent);
+    text-shadow: 0 0 15px rgba(255, 77, 109, 0.5);
+}
+
+.glow-white {
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
+}
+
+.glowing-pink {
+    color: var(--soft-pink);
+    text-shadow: 0 0 15px var(--accent)
+}
+
+.text-dark {
+    color: var(--dark);
+}
+
+/* Night Mode Overrides */
+body.night-mode .title-text {
+    color: var(--white);
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
+}
+
+/* ===== LAYOUT & SECTIONS ===== */
+#particles-js,
+#stars-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.scroll-container {
+    position: relative;
+    z-index: 10;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* Hide unrevealed sections */
+.hidden-section {
+    display: none !important;
+}
+
+/* ===== UTILITIES ===== */
+.mt-1 {
+    margin-top: 10px;
+}
+
+.mt-2 {
+    margin-top: 20px;
+}
+
+.mb-2 {
+    margin-bottom: 20px;
+}
+
+.hidden {
+    display: none !important;
+    opacity: 0;
+}
+
+.glass-container {
+    background: var(--glass-bg);
+    backdrop-filter: blur(15px);
+    border: 1px solid var(--glass-border);
+    padding: 50px;
+    border-radius: 30px;
+    box-shadow: 0 15px 35px rgba(89, 13, 34, 0.1);
+}
+
+.glass-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(89, 13, 34, 0.1);
+}
+
+/* Hover effect */
+.glass-card:hover {
+    box-shadow: 0 15px 35px rgba(89, 13, 34, 0.2);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+/* Night mode glass */
+body.night-mode .glass-container,
+body.night-mode .glass-card {
+    background: rgba(0, 0, 0, 0.4);
+    border-color: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+/* ===== BUTTONS ===== */
+.romance-btn {
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(45deg, var(--accent), #ff758f);
+    color: white;
+    font-size: 1.3rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 10px 20px rgba(255, 77, 109, 0.4);
+    transition: all 0.3s ease;
+    margin-top: 20px;
+}
+
+.romance-btn:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 15px 25px rgba(255, 77, 109, 0.6);
+}
+
+.romance-btn.secondary {
+    background: linear-gradient(45deg, var(--rose-gold), var(--soft-pink));
+}
+
+.romance-btn.small {
+    padding: 10px 25px;
+    font-size: 1rem;
+}
+
+.romance-btn.dark-mode-btn {
+    background: linear-gradient(45deg, #1f2833, #45a29e);
+    box-shadow: 0 10px 20px rgba(69, 162, 158, 0.4);
+}
+
+.romance-btn.massive-btn {
+    font-size: 1.8rem;
+    padding: 20px 50px;
+}
+
+/* ===== ANIMATIONS ===== */
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+.delay-2 {
+    transition-delay: 0.4s;
+}
+
+.delay-3 {
+    transition-delay: 0.6s;
+}
+
+.beating-heart {
+    font-size: 6rem;
+    animation: heartbeat 1.5s infinite alternate;
+    margin: 30px 0;
+}
+
+@keyframes heartbeat {
+    from {
+        transform: scale(1);
+    }
+
+    to {
+        transform: scale(1.2);
+    }
+}
+
+/* ===== SEC 2: TIMELINE ===== */
+.timeline-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    padding: 20px 0;
+}
+
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: rgba(255, 255, 255, 0.6);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 5px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    left: 50%;
+}
+
+.timeline-item.left {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-icon {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    right: -25px;
+    background: var(--white);
+    border: 4px solid var(--accent);
+    border-radius: 50%;
+    top: 15px;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    box-shadow: 0 0 15px rgba(255, 77, 109, 0.5);
+}
+
+.timeline-item.left .timeline-icon {
+    right: auto;
+    left: -25px;
+}
+
+.timeline-content {
+    padding: 20px;
+    border-radius: 15px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.timeline-content h3 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+/* ===== SEC 3: CAKE ===== */
+.cake-container {
+    margin: 40px 0;
+    position: relative;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+.cake {
+    position: relative;
+    width: 200px;
+}
+
+.layer {
+    background: #fff;
+    border-radius: 10px;
+    position: absolute;
+    bottom: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--soft-pink);
+}
+
+.layer-bottom {
+    width: 200px;
+    height: 60px;
+    left: 0;
+    background: #fff0f3;
+}
+
+.layer-middle {
+    width: 160px;
+    height: 50px;
+    left: 20px;
+    bottom: 60px;
+    background: #ffb3c6;
+}
+
+.layer-top {
+    width: 120px;
+    height: 50px;
+    left: 40px;
+    bottom: 110px;
+    background: #ff758f;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-end;
+    padding-bottom: 50px;
+}
+
+.candle {
+    width: 10px;
+    height: 40px;
+    background: repeating-linear-gradient(45deg, white, white 5px, red 5px, red 10px);
+    position: relative;
+    border-radius: 3px;
+}
+
+.flame {
+    width: 15px;
+    height: 25px;
+    background: #ffb703;
+    border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+    position: absolute;
+    top: -30px;
+    left: -2.5px;
+    box-shadow: 0 0 20px #ffb703;
+    animation: flicker 0.5s infinite alternate;
+}
+
+@keyframes flicker {
+    0% {
+        transform: scale(1) rotate(-2deg);
+        opacity: 0.9;
+    }
+
+    100% {
+        transform: scale(1.1) rotate(2deg);
+        opacity: 1;
+    }
+}
+
+/* ===== SEC 4: FLIP CARDS ===== */
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.flip-card {
+    background-color: transparent;
+    width: 220px;
+    height: 250px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-card.flipped .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.flip-card-front h3 {
+    font-family: 'Dancing Script';
+    font-size: 2rem;
+    color: var(--dark);
+}
+
+.flip-card-back {
+    transform: rotateY(180deg);
+    background: rgba(255, 77, 109, 0.1);
+}
+
+.flip-card-back p {
+    font-family: 'Poppins';
+    font-size: 1.1rem;
+    padding: 15px;
+    color: var(--dark);
+    font-weight: 500;
+}
+
+/* ===== SEC 5: GALLERY ===== */
+.polaroid-gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.polaroid {
+    background: white;
+    padding: 15px 15px 30px 15px;
+    border-radius: 5px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transform: rotate(-5deg);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    width: 250px;
+}
+
+.polaroid:nth-child(even) {
+    transform: rotate(5deg);
+}
+
+.polaroid:hover {
+    transform: scale(1.1) rotate(0deg);
+    z-index: 10;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.polaroid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+.polaroid .caption {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.8rem;
+    margin-top: 15px;
+    color: var(--dark);
+}
+
+/* Lightbox */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.9);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.lightbox.active {
+    display: flex;
+    animation: fadeIn 0.5s;
+}
+
+.lightbox-content {
+    max-width: 90%;
+    max-height: 80vh;
+    border-radius: 10px;
+    border: 5px solid white;
+}
+
+#lightbox-caption {
+    color: white;
+    font-family: 'Dancing Script';
+    font-size: 3rem;
+    margin-top: 20px;
+}
+
+.close-lightbox {
+    position: absolute;
+    top: 30px;
+    right: 40px;
+    color: white;
+    font-size: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.close-lightbox:hover {
+    color: var(--accent);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* ===== SEC 6: ENVELOPE ===== */
+#love-title {
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1s cubic-bezier(0.5, 0, 0, 1);
+}
+
+#love-title.open-sync {
+    transform: translateY(-100px) scale(0.95);
+}
+
+#envelope-instruction {
+    transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.4s ease;
+    position: relative;
+    z-index: 1;
+}
+
+#envelope-instruction.hide-sync {
+    transform: translateY(-80px);
+    opacity: 0;
+}
+
+.envelope-wrapper {
+    position: relative;
+    width: 300px;
+    height: 200px;
+    margin: 50px auto 50px auto;
+    cursor: pointer;
+    z-index: 5;
+}
+
+/* The physical envelope */
+.envelope {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 0 0 10px 10px;
+}
+
+/* Back cover */
+.envelope-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #ff4d6d;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* The paper inside */
+.letter {
+    position: absolute;
+    left: 15px;
+    right: 15px;
+    bottom: 10px;
+    height: 180px;
+    background: #fffcf2;
+    padding: 25px 20px;
+    border-radius: 8px;
+    text-align: center;
+    z-index: 2;
+    transition: transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.8s ease;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+    border: 2px solid #ffb3c6;
+}
+
+.letter p {
+    font-size: 1.8rem;
+    margin: 0;
+    line-height: 1.4;
+    color: var(--dark);
+    text-shadow: 0 0 1px rgba(89, 13, 34, 0.1);
+}
+
+/* Front Cover (Creates the diagonal envelope lines over the bottom of the letter) */
+.envelope-front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 5;
+    pointer-events: none;
+    border-bottom: 100px solid #ffb3c6;
+    border-left: 150px solid #ff758f;
+    border-right: 150px solid #ff758f;
+    border-top: 100px solid transparent;
+    border-radius: 0 0 10px 10px;
+}
+
+/* The Flap */
+.envelope-flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-top: 100px solid #c9184a;
+    border-right: 150px solid transparent;
+    border-bottom: 100px solid transparent;
+    border-left: 150px solid transparent;
+    z-index: 6;
+    transform-origin: top;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+/* Heart Seal */
+.envelope-heart {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    font-size: 3rem;
+    color: white;
+    transition: opacity 0.4s ease;
+    animation: beat 1s infinite alternate;
+}
+
+/* Animation Triggers when .open is added via JS */
+.envelope-wrapper.open .envelope-flap {
+    transform: rotateX(180deg);
+    opacity: 0;
+}
+
+.envelope-wrapper.open .envelope-heart {
+    opacity: 0;
+    display: none;
+}
+
+.envelope-wrapper.open .envelope {
+    transform: translateY(80px);
+}
+
+/* The majestic pull-out */
+.envelope-wrapper.open .letter {
+    transform: translateY(-160px) scale(1.4);
+    z-index: 10;
+    cursor: default;
+    box-shadow: 0 30px 60px rgba(89, 13, 34, 0.25);
+}
+
+/* ===== SEC 7: MINI GAME ===== */
+.game-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+}
+
+#game-area {
+    width: 100%;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 15px;
+    position: relative;
+    overflow: hidden;
+    border: 2px dashed rgba(255, 77, 109, 0.5);
+    cursor: crosshair;
+    touch-action: none;
+    /* Prevents page scroll while dragging basket on mobile */
+}
+
+#basket {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2.5rem;
+    transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+    pointer-events: none;
+}
+
+.falling-heart {
+    position: absolute;
+    font-size: 1.5rem;
+    color: var(--accent);
+    animation: fall linear forwards;
+}
+
+@keyframes fall {
+    to {
+        top: 320px;
+    }
+}
+
+.game-ui {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#score {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--dark);
+}
+
+/* ===== SEC 8: QUOTES ===== */
+.quote-glass {
+    padding: 40px;
+    margin-bottom: 20px;
+    max-width: 600px;
+    position: relative;
+}
+
+.quote-icon {
+    font-size: 2rem;
+    color: var(--soft-pink);
+    opacity: 0.5;
+}
+
+.fa-quote-left {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+}
+
+.fa-quote-right {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+}
+
+#quote-display {
+    font-size: 2.5rem;
+    color: var(--dark);
+    margin: 20px;
+    transition: opacity 0.5s ease;
+}
+
+/* ===== SEC 9: OUR SONG ===== */
+.music-player {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 30px;
+    border-radius: 100px;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+.vinyl-record {
+    width: 100px;
+    height: 100px;
+    background: #111;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    position: relative;
+    border: 4px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.vinyl-record.spinning {
+    animation: spin 4s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.vinyl-center {
+    width: 30px;
+    height: 30px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 4px solid #fff;
+}
+
+.player-controls {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.player-controls h3 {
+    margin-bottom: 15px;
+    color: var(--dark);
+    font-size: 1.5rem;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+    position: relative;
+    margin-bottom: 15px;
+}
+
+.progress {
+    width: 0%;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 3px;
+    transition: width 0.1s;
+}
+
+.ctrl-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--accent);
+    font-family: 'Poppins';
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* ===== SEC 11: REASONS SCROLL ===== */
+.reasons-scroll {
+    margin: 20px auto;
+    max-width: 600px;
+    max-height: 250px;
+    overflow-y: auto;
+    text-align: left;
+    padding: 20px;
+}
+
+.reason-item {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    animation: slideInX 0.5s ease forwards;
+    opacity: 0;
+    transform: translateX(-20px);
+}
+
+@keyframes slideInX {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.final-msg {
+    font-size: 4rem;
+    color: var(--accent);
+    text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .section {
+        padding: 40px 15px;
+    }
+
+    .timeline-container::after {
+        left: 31px;
+        /* Center of the icon (15px left + half width) */
+    }
+
+    .timeline-item {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 15px;
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-item.left {
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-icon {
+        left: 15px !important;
+        right: auto !important;
+    }
+
+    .title-text {
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+    }
+
+    .glowing-text,
+    .final-msg {
+        font-size: 2.5rem;
+    }
+
+    .music-player {
+        flex-direction: column;
+        border-radius: 30px;
+        text-align: center;
+    }
+
+    .player-controls {
+        text-align: center;
+        width: 100%;
+    }
+
+    .ctrl-btn {
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .romance-btn {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
+
+    .romance-btn.massive-btn {
+        font-size: 1.2rem;
+        padding: 15px 20px;
+        width: 100%;
+    }
+
+    .glass-container {
+        padding: 30px 15px;
+    }
+
+    .flip-card {
+        width: 100%;
+        max-width: 320px;
+        height: 220px;
+        margin: 0 auto;
+    }
+
+    .flip-card-front h3 {
+        font-size: 1.6rem;
+    }
+
+    .flip-card-back p {
+        font-size: 1.1rem;
+        padding: 15px;
+    }
+
+    .envelope-wrapper {
+        transform: scale(0.85);
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .envelope-wrapper.open .letter {
+        transform: translateY(-130px) scale(1.15);
+    }
+
+    #love-title.open-sync {
+        transform: translateY(-40px) scale(0.9);
+    }
+
+    .quote-glass {
+        padding: 25px 15px;
+    }
+
+    #quote-display {
+        font-size: 1.8rem;
+        margin: 15px 0;
+    }
+
+    .polaroid {
+        width: 100%;
+        max-width: 260px;
+    }
+
+    #lightbox-caption {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .close-lightbox {
+        top: 15px;
+        right: 20px;
+        font-size: 35px;
+    }
+
+    .beating-heart {
+        font-size: 4rem;
+    }
+
+    .instruction {
+        margin-top: -30px !important;
+        position: relative;
+        z-index: 10;
+    }
+}
+
+@media (max-width: 480px) {
+    .title-text {
+        font-size: 1.8rem;
+    }
+
+    .glowing-text,
+    .final-msg {
+        font-size: 2.2rem;
+    }
+
+    .envelope-wrapper {
+        transform: scale(0.7);
+        margin-top: 10px;
+    }
+
+    .reasons-scroll {
+        padding: 15px;
+        max-height: 200px;
+    }
+
+    .reason-item {
+        font-size: 1rem;
+    }
+
+    .timeline-content {
+        padding: 15px;
+    }
+
+    .timeline-content h3 {
+        font-size: 1.5rem;
+    }
+}

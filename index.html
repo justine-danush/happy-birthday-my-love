@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1000">
+    <title>Happy Birthday & Happy Anniversary, My Love! 💖</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Background Audio -->
+    <audio id="bgMusic" loop>
+        <source src="bgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Our Song Audio (For Section 9) -->
+    <audio id="ourSongMusic" loop>
+        <source src="our_song.mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="particles-js"></div>
+    <div id="stars-js" class="hidden"></div>
+    
+    <div class="scroll-container">
+        <!-- 1. Romantic Landing Page -->
+        <section class="section" id="landing">
+            <div class="glass-container slide-up">
+                <h1 class="great-vibes glowing-text">Happy Birthday My Love ❤️</h1>
+                <p class="poppins-text">The most beautiful chapter of my life started when I met you.</p>
+                <div class="heart-pulse-container">
+                    <div class="beating-heart">❤️</div>
+                </div>
+                <button id="start-journey" class="romance-btn">Click if you love me 💌</button>
+            </div>
+        </section>
+
+        <!-- 2. Our Love Story Timeline -->
+        <section class="section hidden-section" id="timeline">
+            <h2 class="dancing-script title-text">Our Love Story Timeline</h2>
+            <div class="timeline-container">
+                <div class="timeline-item reveal">
+                    <div class="timeline-icon">🌟</div>
+                    <div class="timeline-content glass-card">
+                        <h3>The day we met</h3>
+                        <p>From strangers to soulmates... every moment with you became my favorite memory.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal left">
+                    <div class="timeline-icon">💬</div>
+                    <div class="timeline-content glass-card">
+                        <h3>Our first conversation</h3>
+                        <p>I knew right then that there was something completely magical about you.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-icon">☕</div>
+                    <div class="timeline-content glass-card">
+                        <h3>Our first outing</h3>
+                        <p>Time stopped when I looked into your eyes across the table.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal left">
+                    <div class="timeline-icon">❤️</div>
+                    <div class="timeline-content glass-card">
+                        <h3>The day I realized I love you</h3>
+                        <p>The easiest and best feeling in the world.</p>
+                    </div>
+                </div>
+                <div class="timeline-item reveal">
+                    <div class="timeline-icon">💍</div>
+                    <div class="timeline-content glass-card">
+                        <h3>Our Anniversary</h3>
+                        <p>And so many more beautiful years to come.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Birthday Surprise Section -->
+        <section class="section hidden-section" id="birthday-surprise">
+            <h2 class="dancing-script title-text reveal">A Special Birthday Surprise</h2>
+            <div class="cake-container reveal">
+                <!-- 3D CSS Cake -->
+                <div class="cake">
+                    <div class="layer layer-bottom"></div>
+                    <div class="layer layer-middle"></div>
+                    <div class="layer layer-top">
+                        <div class="candle">
+                            <div class="flame" id="flame1"></div>
+                        </div>
+                        <div class="candle">
+                            <div class="flame" id="flame2"></div>
+                        </div>
+                        <div class="candle">
+                            <div class="flame" id="flame3"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p id="cake-message" class="poppins-text hidden">Happy Birthday to the most beautiful person in my universe! 🎈</p>
+            <button id="blow-candles-btn" class="romance-btn reveal">🎂 Blow the candles</button>
+        </section>
+
+        <!-- 4. Reasons Why I Love You -->
+        <section class="section hidden-section" id="reasons">
+            <h2 class="dancing-script title-text reveal">Reasons Why I Love You</h2>
+            <div class="cards-grid">
+                <div class="flip-card reveal">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card">
+                            <h3>Your Smile</h3>
+                        </div>
+                        <div class="flip-card-back glass-card">
+                            <p>Your smile can turn my worst day into the best one.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card reveal delay-1">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card">
+                            <h3>Your Kindness</h3>
+                        </div>
+                        <div class="flip-card-back glass-card">
+                            <p>You have the most beautiful heart in the world.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card reveal delay-2">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card">
+                            <h3>Your Laugh</h3>
+                        </div>
+                        <div class="flip-card-back glass-card">
+                            <p>It's my favorite melody.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flip-card reveal delay-3">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front glass-card">
+                            <h3>The way you care</h3>
+                        </div>
+                        <div class="flip-card-back glass-card">
+                            <p>You make me feel safe and immensely loved.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Memory Gallery -->
+        <section class="section hidden-section" id="gallery">
+            <h2 class="dancing-script title-text reveal">Our Memory Gallery</h2>
+            <p class="poppins-text reveal">Every picture with you is a piece of happiness.</p>
+            <div class="polaroid-gallery">
+                <!-- Using placeholders that user can replace -->
+                <div class="polaroid reveal" onclick="openLightbox('img1.png', 'My happy place ✨')">
+                    <img src="img1.png" alt="Memory" onerror="this.src='https://via.placeholder.com/200x200/ffb3c6/ffffff?text=Our+Photo'">
+                    <p class="caption">Always with you 💕</p>
+                </div>
+                <div class="polaroid reveal delay-1" onclick="openLightbox('img2.png', 'Forever & Always 🌹')">
+                    <img src="img2.png" alt="Memory" onerror="this.src='https://via.placeholder.com/200x200/ffb3c6/ffffff?text=Love'">
+                    <p class="caption">My happy place ✨</p>
+                </div>
+                <div class="polaroid reveal delay-2" onclick="openLightbox('img3.png', 'Favorite memory')">
+                    <img src="img3.png" alt="Memory" onerror="this.src='https://via.placeholder.com/200x200/ffb3c6/ffffff?text=Us'">
+                    <p class="caption">Forever & Always 🌹</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Secret Love Letters -->
+        <section class="section hidden-section" id="love-letter">
+            <h2 class="dancing-script title-text reveal" id="love-title">Secret Love Letters</h2>
+            <div class="envelope-wrapper reveal" id="envelope-wrapper">
+                <div class="envelope">
+                    <div class="envelope-back"></div>
+                    <div class="letter">
+                        <p class="great-vibes text-dark">If I had one wish, it would be to live every lifetime with you. You are my forever.</p>
+                    </div>
+                    <div class="envelope-front"></div>
+                    <div class="envelope-flap"></div>
+                    <div class="envelope-heart">❤️</div>
+                </div>
+            </div>
+            <p class="poppins-text instruction reveal mt-2" id="envelope-instruction">Click the envelope to open ✉️</p>
+        </section>
+
+        <!-- 7. Mini Love Game -->
+        <section class="section hidden-section" id="mini-game">
+            <h2 class="dancing-script title-text reveal">Catch My Heart</h2>
+            <p class="poppins-text reveal">Catch 10 hearts in the basket!</p>
+            <div class="game-container glass-card reveal">
+                <div id="game-area">
+                    <div id="basket">🎒</div>
+                </div>
+                <div class="game-ui">
+                    <span id="score">Score: 0</span>
+                    <button id="start-game-btn" class="romance-btn small">Play</button>
+                </div>
+                <div id="game-message" class="hidden glowing-text">You caught my heart! ❤️</div>
+            </div>
+        </section>
+
+        <!-- 8. Romantic Quote Generator -->
+        <section class="section hidden-section" id="quote-generator">
+            <h2 class="dancing-script title-text reveal">Words For You</h2>
+            <div class="quote-glass glass-card reveal">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <p id="quote-display" class="dancing-script">"You are my today and all my tomorrows."</p>
+                <i class="fas fa-quote-right quote-icon"></i>
+            </div>
+            <button id="generate-quote-btn" class="romance-btn reveal mt-2">💘 Generate Love Message</button>
+        </section>
+
+        <!-- 9. Our Song -->
+        <section class="section hidden-section" id="our-song">
+            <h2 class="dancing-script title-text reveal">🎶 Our Song</h2>
+            <div class="music-player glass-card reveal">
+                <div class="vinyl-record" id="vinyl">
+                    <div class="vinyl-center"></div>
+                </div>
+                <div class="player-controls">
+                    <h3 class="poppins-text">Our Special Track</h3>
+                    <div class="progress-bar">
+                        <div class="progress" id="progress"></div>
+                    </div>
+                    <button id="play-pause-btn" class="ctrl-btn"><i class="fas fa-play"></i> Play</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 10. Starry Night Promise -->
+        <!-- Handled visually by toggling #stars-js and dark mode on scroll -->
+        <section class="section hidden-section" id="starry-night">
+            <h2 class="great-vibes title-text glow-white reveal">No matter how many stars are in the sky,<br>my love for you shines brighter.</h2>
+            <button id="make-wish-btn" class="romance-btn dark-mode-btn reveal">✨ Make a Wish</button>
+            <p id="wish-message" class="poppins-text hidden glow-white">My wish already came true when I met you. 💖</p>
+        </section>
+
+        <!-- 11. Final Surprise -->
+        <section class="section hidden-section" id="final-surprise">
+            <div class="glass-container reveal">
+                <h2 class="dancing-script glowing-text glowing-pink">You are not just my girlfriend.</h2>
+                <h2 class="dancing-script glowing-text">You are my happiness, my peace, and my forever.</h2>
+                
+                <div id="reasons-100" class="hidden mt-2 mb-2">
+                    <h3 class="great-vibes text-dark">100 Reasons Why I Love You</h3>
+                    <div id="reasons-list" class="glass-card reasons-scroll">
+                        <!-- Populated by JS -->
+                    </div>
+                    <button id="show-next-reason" class="romance-btn small mt-1">Show Next Reason</button>
+                </div>
+                
+                <button id="reasons-100-btn" class="romance-btn secondary mb-2">💖 100 Reasons Why I Love You</button>
+                
+                <br>
+                <button id="final-proposal-btn" class="romance-btn massive-btn mt-2">❤️ Will you stay with me forever?</button>
+                
+                <div id="final-message-container" class="hidden mt-2">
+                    <h1 class="great-vibes final-msg">Happy Birthday & Happy Anniversary My Love ❤️</h1>
+                    <p class="poppins-text text-dark">"Out of all the people in this world, my heart chose you. And I will choose you again and again in every lifetime."</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox">
+        <span class="close-lightbox">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
