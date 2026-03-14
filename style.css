@@ -919,19 +919,183 @@ body.night-mode .glass-card {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
-/* ===== DESKTOP LAYOUT FORCED ON MOBILE ===== */
-@media (max-width: 1000px) {
-    /* Instead of breaking the layout down or shrinking text, 
-       we force the body width to match a desktop resolution 
-       and zoom out smoothly to fit the screen. */
-    body {
-        width: 1000px;
-        transform-origin: top left;
-        /* Let JS calculate the exact scale based on window.innerWidth */
+/* ===== RESPONSIVE & MOBILE OPTIMIZED ===== */
+@media (max-width: 768px) {
+    /* Container Scaling */
+    .section {
+        padding: 80px 20px; /* Keep vertical breathing room */
+        min-height: auto;   /* Prevent overlaps by allowing natural height */
     }
     
-    /* Ensure the scroll container doesn't overflow horizontally */
-    html {
-        overflow-x: hidden;
+    .glass-container {
+        padding: 40px 20px;
+    }
+
+    /* Typography Tweaks for readability (Not too small, not too large) */
+    .title-text {
+        font-size: 2.8rem; /* Slightly smaller than desktop but keeping the impact */
+        margin-bottom: 25px;
+    }
+
+    .glowing-text {
+        font-size: 3.2rem;
+    }
+    
+    .final-msg {
+        font-size: 3rem;
+    }
+    
+    .poppins-text {
+        font-size: 1.1rem; /* Highly readable */
+    }
+
+    /* Timeline Fixes (Linear on Mobile) */
+    .timeline-container::after {
+        left: 31px; /* 15px pad + half icon */
+    }
+
+    .timeline-item, .timeline-item.left {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 15px;
+        left: 0;
+        text-align: left;
+    }
+
+    .timeline-icon {
+        left: 15px !important;
+        right: auto !important;
+        transform: scale(0.9);
+    }
+    
+    .timeline-content h3 {
+        font-size: 1.8rem;
+    }
+
+    /* Interactive Elements */
+    .romance-btn {
+        font-size: 1.1rem;
+        padding: 15px 30px;
+        width: 100%; /* Better tap targets on mobile */
+        max-width: 300px; /* But limit width */
+        margin: 15px auto;
+        display: block;
+    }
+
+    .romance-btn.massive-btn {
+        font-size: 1.3rem;
+    }
+
+    /* Cards & Grids */
+    .cards-grid {
+        gap: 30px;
+    }
+
+    .flip-card {
+        width: 100%;
+        max-width: 320px;
+        height: 250px;
+    }
+
+    .flip-card-front h3 {
+        font-size: 2rem;
+    }
+
+    /* Photos */
+    .polaroid {
+        width: 100%;
+        max-width: 280px;
+    }
+
+    /* Envelope Resizing */
+    .envelope-wrapper {
+        transform: scale(0.85); /* Just slightly smaller to fit width */
+        margin: 40px auto;
+    }
+    
+    .envelope-wrapper.open .letter {
+        transform: translateY(-130px) scale(1.15); /* Enhance the pop out */
+    }
+    
+    #love-title.open-sync {
+        transform: translateY(-40px) scale(0.9);
+    }
+    
+    .instruction {
+        margin-top: -10px !important;
+        position: relative;
+        z-index: 10;
+    }
+
+    /* Game & Quotes */
+    .game-container {
+        padding: 15px;
+    }
+    
+    #quote-display {
+        font-size: 2rem;
+        margin: 20px 0;
+    }
+    
+    .quote-glass {
+        padding: 30px 20px;
+    }
+
+    /* Music Player */
+    .music-player {
+        flex-direction: column;
+        border-radius: 30px;
+        padding: 20px;
+    }
+    
+    .player-controls {
+        text-align: center;
+        width: 100%;
+    }
+    
+    .ctrl-btn {
+        justify-content: center;
+        width: 100%;
+    }
+    
+    /* 100 Reasons Box */
+    .reasons-scroll {
+        max-height: 250px;
+        padding: 15px;
+    }
+    
+    .reason-item {
+        font-size: 1.1rem;
+    }
+    
+    /* Cake */
+    .cake-container {
+        margin: 60px 0;
+    }
+    .cake {
+        transform: scale(0.9);
+    }
+}
+
+/* Extra small screens (iPhone SE, small Androids) */
+@media (max-width: 480px) {
+    .title-text {
+        font-size: 2.4rem;
+    }
+
+    .glowing-text {
+        font-size: 2.8rem;
+    }
+    
+    .envelope-wrapper {
+        transform: scale(0.75); /* Slightly smaller for tiny screens */
+    }
+    
+    .flip-card-front h3 {
+        font-size: 1.8rem;
+    }
+    
+    .beating-heart {
+        font-size: 4rem;
     }
 }
