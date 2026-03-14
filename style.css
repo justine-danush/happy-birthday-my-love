@@ -923,40 +923,40 @@ body.night-mode .glass-card {
 @media (max-width: 768px) {
     /* Container Scaling */
     .section {
-        padding: 80px 20px; /* Keep vertical breathing room */
-        min-height: auto;   /* Prevent overlaps by allowing natural height */
+        padding: 50px 15px; /* Slightly tighter padding to allow bigger elements */
+        min-height: auto;
     }
     
     .glass-container {
-        padding: 40px 20px;
+        padding: 40px 15px;
     }
 
-    /* Typography Tweaks for readability (Not too small, not too large) */
+    /* Overall Typography */
     .title-text {
-        font-size: 2.8rem; /* Slightly smaller than desktop but keeping the impact */
+        font-size: 3rem; /* Bigger title */
         margin-bottom: 25px;
     }
 
     .glowing-text {
-        font-size: 3.2rem;
+        font-size: 3.5rem;
     }
     
     .final-msg {
-        font-size: 3rem;
+        font-size: 3.2rem;
     }
     
     .poppins-text {
-        font-size: 1.1rem; /* Highly readable */
+        font-size: 1.3rem; /* Overall text scale up */
     }
 
-    /* Timeline Fixes (Linear on Mobile) */
+    /* Timeline Section */
     .timeline-container::after {
-        left: 31px; /* 15px pad + half icon */
+        left: 31px;
     }
 
     .timeline-item, .timeline-item.left {
         width: 100%;
-        padding-left: 70px;
+        padding-left: 75px; /* More padding to make room for big icon */
         padding-right: 15px;
         left: 0;
         text-align: left;
@@ -965,137 +965,196 @@ body.night-mode .glass-card {
     .timeline-icon {
         left: 15px !important;
         right: auto !important;
-        transform: scale(0.9);
+        transform: scale(1); /* Don't shrink icon */
+    }
+    
+    .timeline-content {
+        padding: 25px; /* Bigger padding */
     }
     
     .timeline-content h3 {
-        font-size: 1.8rem;
+        font-size: 2.2rem; /* Bigger timeline title */
+    }
+    
+    .timeline-content p {
+        font-size: 1.25rem; /* Bigger timeline text */
     }
 
-    /* Interactive Elements */
+    /* Cake Section */
+    .cake-container {
+        margin: 60px 0;
+        height: 220px;
+    }
+    .cake {
+        transform: scale(1.1); /* Make cake physically larger */
+    }
+    #cake-message {
+        font-size: 1.5rem; /* Bigger cake text */
+        margin-top: 30px;
+    }
+
+    /* Buttons */
     .romance-btn {
-        font-size: 1.1rem;
-        padding: 15px 30px;
-        width: 100%; /* Better tap targets on mobile */
-        max-width: 300px; /* But limit width */
+        font-size: 1.3rem; /* Bigger buttons */
+        padding: 18px 30px;
+        width: 100%;
+        max-width: 320px;
         margin: 15px auto;
         display: block;
     }
 
     .romance-btn.massive-btn {
-        font-size: 1.3rem;
+        font-size: 1.5rem;
     }
 
-    /* Cards & Grids */
+    /* Reasons Cards */
     .cards-grid {
         gap: 30px;
     }
 
     .flip-card {
         width: 100%;
-        max-width: 320px;
-        height: 250px;
+        max-width: 340px;
+        height: 280px; /* Taller card */
     }
 
     .flip-card-front h3 {
-        font-size: 2rem;
+        font-size: 2.6rem; /* Huge front text */
+    }
+    
+    .flip-card-back p {
+        font-size: 1.4rem; /* Readable back text */
+        line-height: 1.5;
     }
 
     /* Photos */
     .polaroid {
         width: 100%;
-        max-width: 280px;
+        max-width: 320px;
     }
 
-    /* Envelope Resizing */
+    /* Envelope Region */
     .envelope-wrapper {
-        transform: scale(0.85); /* Just slightly smaller to fit width */
-        margin: 40px auto;
+        transform: scale(1.05); /* Enlarge envelope slightly above base */
+        margin: 60px auto;
     }
     
     .envelope-wrapper.open .letter {
-        transform: translateY(-130px) scale(1.15); /* Enhance the pop out */
+        transform: translateY(-150px) scale(1.2); /* Huge pop out */
     }
     
+    .letter p {
+        font-size: 2rem; /* Bigger letter text */
+    }
+
     #love-title.open-sync {
-        transform: translateY(-40px) scale(0.9);
+        transform: translateY(-50px) scale(0.95);
     }
     
     .instruction {
-        margin-top: -10px !important;
+        margin-top: 10px !important; /* Move text down */
+        font-size: 1.4rem;
         position: relative;
         z-index: 10;
     }
 
-    /* Game & Quotes */
+    /* Game */
     .game-container {
-        padding: 15px;
+        padding: 25px; /* Bigger container */
+        max-width: 360px;
+    }
+    
+    #basket {
+        font-size: 3rem; /* Bigger basket */
+    }
+    
+    #score {
+        font-size: 1.8rem; /* Bigger score */
+    }
+    
+    .falling-heart {
+        font-size: 2rem; /* Bigger hearts */
+    }
+
+    /* Quotes */
+    .quote-glass {
+        padding: 40px 25px;
+        max-width: 360px;
     }
     
     #quote-display {
-        font-size: 2rem;
-        margin: 20px 0;
-    }
-    
-    .quote-glass {
-        padding: 30px 20px;
+        font-size: 2.4rem; /* Giant quote */
+        margin: 25px 0;
+        line-height: 1.4;
     }
 
     /* Music Player */
     .music-player {
         flex-direction: column;
-        border-radius: 30px;
-        padding: 20px;
+        border-radius: 40px;
+        padding: 30px;
+        max-width: 360px;
+    }
+    
+    .vinyl-record {
+        width: 130px; /* Bigger record */
+        height: 130px;
     }
     
     .player-controls {
         text-align: center;
         width: 100%;
+        margin-top: 20px;
+    }
+    
+    .player-controls h3 {
+        font-size: 1.8rem; /* Bigger track name */
     }
     
     .ctrl-btn {
         justify-content: center;
         width: 100%;
+        font-size: 1.4rem; /* Bigger play btn */
     }
     
     /* 100 Reasons Box */
     .reasons-scroll {
-        max-height: 250px;
-        padding: 15px;
+        max-height: 300px;
+        padding: 20px;
     }
     
     .reason-item {
-        font-size: 1.1rem;
-    }
-    
-    /* Cake */
-    .cake-container {
-        margin: 60px 0;
-    }
-    .cake {
-        transform: scale(0.9);
+        font-size: 1.3rem; /* Bigger reason items */
     }
 }
 
 /* Extra small screens (iPhone SE, small Androids) */
 @media (max-width: 480px) {
     .title-text {
-        font-size: 2.4rem;
+        font-size: 2.6rem;
     }
 
     .glowing-text {
-        font-size: 2.8rem;
+        font-size: 3rem;
     }
     
     .envelope-wrapper {
-        transform: scale(0.75); /* Slightly smaller for tiny screens */
+        transform: scale(0.9); /* Normal baseline scale */
     }
     
     .flip-card-front h3 {
-        font-size: 1.8rem;
+        font-size: 2.2rem;
+    }
+    
+    .flip-card-back p {
+        font-size: 1.25rem;
     }
     
     .beating-heart {
-        font-size: 4rem;
+        font-size: 5rem; /* Massive heart */
+    }
+    
+    .cake {
+        transform: scale(0.95); /* Fit small screens */
     }
 }
