@@ -919,172 +919,19 @@ body.night-mode .glass-card {
     text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
 }
 
-/* ===== RESPONSIVE ===== */
-@media (max-width: 768px) {
-    .section {
-        padding: 40px 15px;
+/* ===== DESKTOP LAYOUT FORCED ON MOBILE ===== */
+@media (max-width: 1000px) {
+    /* Instead of breaking the layout down or shrinking text, 
+       we force the body width to match a desktop resolution 
+       and zoom out smoothly to fit the screen. */
+    body {
+        width: 1000px;
+        transform-origin: top left;
+        /* Let JS calculate the exact scale based on window.innerWidth */
     }
-
-    .timeline-container::after {
-        left: 31px;
-        /* Center of the icon (15px left + half width) */
-    }
-
-    .timeline-item {
-        width: 100%;
-        padding-left: 70px;
-        padding-right: 15px;
-        left: 0;
-        text-align: left;
-    }
-
-    .timeline-item.left {
-        left: 0;
-        text-align: left;
-    }
-
-    .timeline-icon {
-        left: 15px !important;
-        right: auto !important;
-    }
-
-    .title-text {
-        font-size: 2.2rem;
-        margin-bottom: 20px;
-    }
-
-    .glowing-text,
-    .final-msg {
-        font-size: 2.5rem;
-    }
-
-    .music-player {
-        flex-direction: column;
-        border-radius: 30px;
-        text-align: center;
-    }
-
-    .player-controls {
-        text-align: center;
-        width: 100%;
-    }
-
-    .ctrl-btn {
-        justify-content: center;
-        width: 100%;
-        margin-top: 10px;
-    }
-
-    .romance-btn {
-        font-size: 1rem;
-        padding: 12px 25px;
-    }
-
-    .romance-btn.massive-btn {
-        font-size: 1.2rem;
-        padding: 15px 20px;
-        width: 100%;
-    }
-
-    .glass-container {
-        padding: 30px 15px;
-    }
-
-    .flip-card {
-        width: 100%;
-        max-width: 320px;
-        height: 220px;
-        margin: 0 auto;
-    }
-
-    .flip-card-front h3 {
-        font-size: 1.6rem;
-    }
-
-    .flip-card-back p {
-        font-size: 1.1rem;
-        padding: 15px;
-    }
-
-    .envelope-wrapper {
-        transform: scale(0.85);
-        margin-top: 30px;
-        margin-bottom: 20px;
-    }
-
-    .envelope-wrapper.open .letter {
-        transform: translateY(-130px) scale(1.15);
-    }
-
-    #love-title.open-sync {
-        transform: translateY(-40px) scale(0.9);
-    }
-
-    .quote-glass {
-        padding: 25px 15px;
-    }
-
-    #quote-display {
-        font-size: 1.8rem;
-        margin: 15px 0;
-    }
-
-    .polaroid {
-        width: 100%;
-        max-width: 260px;
-    }
-
-    #lightbox-caption {
-        font-size: 2rem;
-        text-align: center;
-    }
-
-    .close-lightbox {
-        top: 15px;
-        right: 20px;
-        font-size: 35px;
-    }
-
-    .beating-heart {
-        font-size: 4rem;
-    }
-
-    .instruction {
-        margin-top: -30px !important;
-        position: relative;
-        z-index: 10;
-    }
-}
-
-@media (max-width: 480px) {
-    .title-text {
-        font-size: 1.8rem;
-    }
-
-    .glowing-text,
-    .final-msg {
-        font-size: 2.2rem;
-    }
-
-    .envelope-wrapper {
-        transform: scale(0.7);
-        margin-top: 10px;
-    }
-
-    .reasons-scroll {
-        padding: 15px;
-        max-height: 200px;
-    }
-
-    .reason-item {
-        font-size: 1rem;
-    }
-
-    .timeline-content {
-        padding: 15px;
-    }
-
-    .timeline-content h3 {
-        font-size: 1.5rem;
+    
+    /* Ensure the scroll container doesn't overflow horizontally */
+    html {
+        overflow-x: hidden;
     }
 }

@@ -367,4 +367,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Start
     initParticles();
+
+    // --- 13. Mobile Scale Fix (Force Desktop Layout) ---
+    function applyMobileScale() {
+        if (window.innerWidth < 1000) {
+            const scale = window.innerWidth / 1000;
+            document.body.style.transform = `scale(${scale})`;
+            document.documentElement.style.height = `${document.body.scrollHeight * scale}px`;
+        } else {
+            document.body.style.transform = 'none';
+            document.documentElement.style.height = 'auto';
+        }
+    }
+    window.addEventListener('resize', applyMobileScale);
+    window.addEventListener('load', applyMobileScale);
+    applyMobileScale();
 });
