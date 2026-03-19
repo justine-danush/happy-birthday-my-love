@@ -1046,21 +1046,16 @@ body.night-mode .glass-card {
     }
 
     .flip-card {
-        width: 100%;
-        max-width: 320px;
-        height: auto;
-        aspect-ratio: 1 / 1;
-        /* Square box layout */
+        width: 220px;
+        height: 250px;
     }
 
     .flip-card-front h3 {
-        font-size: 2.6rem;
-        /* Huge front text */
+        font-size: 2rem;
     }
 
     .flip-card-back p {
-        font-size: 1.4rem;
-        /* Readable back text */
+        font-size: 1.1rem;
         line-height: 1.5;
     }
 
