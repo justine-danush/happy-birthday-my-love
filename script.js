@@ -2,7 +2,34 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Core Elements
     const audio = document.getElementById('bgMusic');
-    const ourSongAudio = document.getElementById('ourSongMusic');
+
+    // --- 0. Magical Cursor Trail ---
+    let lastMouseTime = 0;
+    document.addEventListener('mousemove', (e) => {
+        const now = Date.now();
+        if (now - lastMouseTime > 50) {
+            createCursorHeart(e.clientX, e.clientY);
+            lastMouseTime = now;
+        }
+    });
+
+    document.addEventListener('touchmove', (e) => {
+        const now = Date.now();
+        if (now - lastMouseTime > 80) {
+            createCursorHeart(e.touches[0].clientX, e.touches[0].clientY);
+            lastMouseTime = now;
+        }
+    }, { passive: true });
+
+    function createCursorHeart(x, y) {
+        const heart = document.createElement('div');
+        heart.classList.add('cursor-heart');
+        heart.innerText = ['❤️', '✨', '💖', '💕'][Math.floor(Math.random() * 4)];
+        heart.style.left = (x - 10) + 'px';
+        heart.style.top = (y - 10) + 'px';
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 1000);
+    }
 
     // --- 1. Init Particles (Floating Hearts) ---
     function initParticles() {
@@ -35,9 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
         audio.volume = 0.5;
         audio.play().catch(e => console.log("Audio autoplay prevented"));
 
-        // Setup Stars layer initially hidden
-        initStars();
-
         // Scroll to timeline nicely
         document.getElementById('timeline').scrollIntoView({ behavior: 'smooth' });
     });
@@ -49,16 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
 
-                // Toggle dark mode if Starry Night section
-                if (entry.target.id === 'starry-night' || entry.target.closest('#starry-night')) {
-                    document.body.classList.add('night-mode');
-                    document.getElementById('particles-js').classList.add('hidden');
-                    document.getElementById('stars-js').classList.remove('hidden');
-                } else {
-                    document.body.classList.remove('night-mode');
-                    document.getElementById('particles-js').classList.remove('hidden');
-                    document.getElementById('stars-js').classList.add('hidden');
-                }
+
             }
         });
     }, observerOptions);
@@ -103,7 +118,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const envelope = document.getElementById('envelope-wrapper');
     const loveTitle = document.getElementById('love-title');
     const envelopeInstruction = document.getElementById('envelope-instruction');
-    
+
     envelope.addEventListener('click', () => {
         envelope.classList.toggle('open');
         if (loveTitle) {
@@ -164,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
         heart.style.top = '-20px';
 
         // Optimized: Faster falling speed range
-        const duration = Math.random() * 1.5 + 1.0; 
+        const duration = Math.random() * 1.5 + 1.0;
         heart.style.animationDuration = duration + 's';
 
         gameArea.appendChild(heart);
@@ -209,111 +224,130 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!gameActive) return; // Prevent double calling if won by score and then timeout
         gameActive = false;
         clearInterval(gameInterval);
-        
+
         // Remove remaining hearts immediately
         document.querySelectorAll('.falling-heart').forEach(h => h.remove());
 
         startNumBtn.innerText = "Play Again";
         startNumBtn.disabled = false;
         gameMsg.classList.remove('hidden');
-        
+
         if (score >= 10) {
             gameMsg.innerText = "You caught my heart! 🤍✨";
             confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 } });
-            
+
             // Auto-transition to the Quote Generator section
             setTimeout(() => {
                 document.getElementById('quote-generator').scrollIntoView({ behavior: 'smooth' });
             }, 4000); // Increased wait time to 4s to enjoy the win
-            
+
         } else {
             gameMsg.innerText = "Good try! You caught " + score + " hearts. 💕";
         }
     }
 
+    // --- 8.5 Scratch-Off Coupons ---
+    const canvases = document.querySelectorAll('.scratch-canvas');
+    canvases.forEach(canvas => {
+        const ctx = canvas.getContext('2d');
+        const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+        // Bright metallic silver gradient
+        gradient.addColorStop(0, '#e0e0e0');
+        gradient.addColorStop(0.5, '#ffffff');
+        gradient.addColorStop(1, '#c0c0c0');
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.font = "bold 22px Poppins";
+        ctx.fillStyle = "#666";
+        ctx.textAlign = "center";
+
+        ctx.fillText("Scratch Me!", canvas.width / 2, canvas.height / 2 + 8);
+
+        let isDrawing = false;
+
+        function getMousePos(e) {
+            const rect = canvas.getBoundingClientRect();
+            let clientX = e.clientX;
+            let clientY = e.clientY;
+            if (e.touches && e.touches.length > 0) {
+                clientX = e.touches[0].clientX;
+                clientY = e.touches[0].clientY;
+            }
+            return { x: clientX - rect.left, y: clientY - rect.top };
+        }
+
+        function scratch(e) {
+            if (!isDrawing) return;
+            e.preventDefault();
+            const pos = getMousePos(e);
+            ctx.globalCompositeOperation = 'destination-out';
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, 45, 0, Math.PI * 2);
+            ctx.fill();
+            checkScratched();
+        }
+
+        let lastCheck = 0;
+        function checkScratched() {
+            if (Date.now() - lastCheck < 500) return;
+            lastCheck = Date.now();
+
+            const pixels = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+            let transp = 0;
+            for (let i = 3; i < pixels.length; i += 4) {
+                if (pixels[i] === 0) transp++;
+            }
+            if (transp / (pixels.length / 4) > 0.35) {
+                canvas.style.opacity = '0';
+                setTimeout(() => canvas.style.display = 'none', 500);
+                confetti({ particleCount: 30, spread: 50, origin: { y: 0.8 } });
+            }
+        }
+
+        canvas.addEventListener('mousedown', () => isDrawing = true);
+        canvas.addEventListener('mousemove', scratch);
+        canvas.addEventListener('mouseup', () => isDrawing = false);
+        canvas.addEventListener('mouseleave', () => isDrawing = false);
+
+        canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); }, { passive: false });
+        canvas.addEventListener('touchmove', scratch, { passive: false });
+        canvas.addEventListener('touchend', () => isDrawing = false);
+    });
+
     // --- 9. Quote Generator ---
     const quotes = [
-        "You are my today and all my tomorrows.",
-        "My favorite place is inside your hug.",
-        "Your love is my greatest blessing.",
-        "I need you like a heart needs a beat.",
-        "Every love story is beautiful, but ours is my favorite.",
-        "I look at you and see the rest of my life in front of my eyes."
+        "Ennudaya indru netru naalai ellame nee dha da 🫠❤️.",
+        "Un kooda irukura neram dhan enaku romba pidicha neram 🙃🫠💗.",
+        "Evalo kastma irundhalu un thola sanja ellame marandhruven teriuma 😩🔗💗.",
+        "ne illama onnume mudiyadhu ma 🫴🏻😭",
+        "En happiness ku innoru peruna adhu nee dha 🥲❤️‍🩹.",
+        "idhe mari happy unkooda irukanum eppome , kedaikuma 🥺🤍."
     ];
     const quoteBtn = document.getElementById('generate-quote-btn');
     const quoteDisplay = document.getElementById('quote-display');
+    let currentQuoteIndex = 0;
 
     quoteBtn.addEventListener('click', () => {
         quoteDisplay.style.opacity = 0;
         setTimeout(() => {
-            const randomQ = quotes[Math.floor(Math.random() * quotes.length)];
-            quoteDisplay.innerText = '"' + randomQ + '"';
+            const nextQ = quotes[currentQuoteIndex];
+            quoteDisplay.innerText = '"' + nextQ + '"';
             quoteDisplay.style.opacity = 1;
+            currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
         }, 500);
     });
 
-    // --- 10. Music Player ---
-    const playPauseBtn = document.getElementById('play-pause-btn');
-    const vinyl = document.getElementById('vinyl');
-    const progressBar = document.getElementById('progress');
-
-    playPauseBtn.addEventListener('click', () => {
-        if (ourSongAudio.paused) {
-            audio.pause(); // Pause background music while Our Song plays
-            ourSongAudio.play();
-            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i> Pause';
-            vinyl.classList.add('spinning');
-        } else {
-            ourSongAudio.pause();
-            audio.play(); // Resume background music
-            playPauseBtn.innerHTML = '<i class="fas fa-play"></i> Play';
-            vinyl.classList.remove('spinning');
-        }
-    });
-
-    ourSongAudio.addEventListener('timeupdate', () => {
-        if (ourSongAudio.duration) {
-            const pct = (ourSongAudio.currentTime / ourSongAudio.duration) * 100;
-            progressBar.style.width = pct + '%';
-        }
-    });
-
-    // --- 11. Starry Night Promise ---
-    function initStars() {
-        particlesJS('stars-js', {
-            "particles": {
-                "number": { "value": 150 },
-                "color": { "value": "#ffffff" },
-                "shape": { "type": "circle" },
-                "opacity": { "value": 0.8, "random": true, "anim": { "enable": true, "speed": 1, "opacity_min": 0.1, "sync": false } },
-                "size": { "value": 3, "random": true, "anim": { "enable": true, "speed": 2, "size_min": 0.1, "sync": false } },
-                "line_linked": { "enable": false },
-                "move": { "enable": true, "speed": 0.5, "direction": "none", "random": true, "out_mode": "out" }
-            },
-            "retina_detect": true
-        });
-    }
-
-    const wishBtn = document.getElementById('make-wish-btn');
-    wishBtn.addEventListener('click', () => {
-        document.getElementById('wish-message').classList.remove('hidden');
-        wishBtn.style.display = 'none';
-        // Add a shooting star effect via confetti
-        confetti({
-            particleCount: 20, angle: 135, spread: 30, origin: { x: 0.8, y: 0.2 },
-            colors: ['#ffffff', '#fff3b0']
-        });
-    });
-
+    // Removed make a wish logic
     // --- 12. Final Surprise & 100 Reasons ---
     let reasons100 = [
-        "Your smile", "Your kindness", "Your voice", "The way you care for me",
-        "You make my life beautiful", "Your beautiful eyes", "Your infectious laugh",
-        "How you support my dreams", "Your patience with me", "The way you hold my hand"
+        "onnoda kannam 😛", "onnoda kural 🫠", "un kangal 👀", "nee enna pathukra vidham 😌",
+        "andha mooku👃🏻", "apro adhu 🌚", "un keezh udhadu 🫦",
+        "enkooda sanda podradhu😹", "un loosu thanam 😌😑", "apro andha menmaiyana un kaigal🤲🏻 "
         // In reality, user wanted 100. We will map 20 beautiful ones and repeat or let them expand.
     ];
     // pad to 100 for dramatic effect
-    while (reasons100.length < 100) reasons100.push("the reasons why i love you is still same");
+    while (reasons100.length < 100) reasons100.push("I love you ma mailu 🤍❤️🔗😘💋");
 
     const reasonsBtn = document.getElementById('reasons-100-btn');
     const reasonsContainer = document.getElementById('reasons-100');
@@ -332,7 +366,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function showNextReason() {
         if (currentReasonIndex < reasons100.length) {
             const p = document.createElement('div');
-            p.className = 'reason-item great-vibes';
+            p.className = 'reason-item dancing-script';
             p.innerText = (currentReasonIndex + 1) + ". " + reasons100[currentReasonIndex];
             reasonsList.appendChild(p);
             // auto scroll
@@ -343,6 +377,35 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+    const lockContainer = document.getElementById('lock-container');
+    const unlockedContent = document.getElementById('unlocked-content');
+    const passcodeInput = document.getElementById('passcode');
+    const unlockBtn = document.getElementById('unlock-btn');
+    const lockError = document.getElementById('lock-error');
+
+    // **USER NOTE**: Change "1234" to whatever 4-digit code you want!
+    const SECRET_CODE = "2029";
+
+    unlockBtn.addEventListener('click', () => {
+        if (passcodeInput.value === SECRET_CODE) {
+            lockContainer.style.transform = 'translateY(-50px)';
+            lockContainer.style.opacity = '0';
+            setTimeout(() => {
+                lockContainer.classList.add('hidden');
+                unlockedContent.classList.remove('hidden');
+                unlockedContent.classList.add('fade-in');
+                confetti({ particleCount: 100, spread: 70, origin: { y: 0.6 } });
+            }, 500);
+        } else {
+            lockError.classList.remove('hidden');
+            passcodeInput.value = '';
+            lockContainer.style.transform = 'translateX(-10px)';
+            setTimeout(() => lockContainer.style.transform = 'translateX(10px)', 100);
+            setTimeout(() => lockContainer.style.transform = 'translateX(-10px)', 200);
+            setTimeout(() => lockContainer.style.transform = 'translateX(0)', 300);
+        }
+    });
 
     const proposalBtn = document.getElementById('final-proposal-btn');
     const finalMsgContainer = document.getElementById('final-message-container');

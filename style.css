@@ -632,7 +632,7 @@ body.night-mode .glass-card {
     bottom: 10px;
     height: 180px;
     background: #fffcf2;
-    padding: 25px 20px;
+    padding: 25px 20px 15px 20px;
     border-radius: 8px;
     text-align: center;
     z-index: 2;
@@ -640,12 +640,22 @@ body.night-mode .glass-card {
     transform: translateY(0) scale(1);
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
     border: 2px solid #ffb3c6;
+    overflow-y: auto;
+}
+
+.letter::-webkit-scrollbar {
+    width: 6px;
+}
+
+.letter::-webkit-scrollbar-thumb {
+    background: var(--soft-pink);
+    border-radius: 3px;
 }
 
 .letter p {
-    font-size: 1.8rem;
+    font-size: 1.3rem;
     margin: 0;
-    line-height: 1.4;
+    line-height: 1.6;
     color: var(--dark);
     text-shadow: 0 0 1px rgba(89, 13, 34, 0.1);
 }
@@ -708,10 +718,10 @@ body.night-mode .glass-card {
 
 /* The majestic pull-out */
 .envelope-wrapper.open .letter {
-    transform: translateY(-160px) scale(1.4);
-    z-index: 10;
-    cursor: default;
-    box-shadow: 0 30px 60px rgba(89, 13, 34, 0.25);
+    transform: translateY(-220px) scale(1.6);
+    z-index: 20;
+    cursor: auto;
+    box-shadow: 0 40px 80px rgba(89, 13, 34, 0.4);
 }
 
 /* ===== SEC 7: MINI GAME ===== */
@@ -921,32 +931,36 @@ body.night-mode .glass-card {
 
 /* ===== RESPONSIVE & MOBILE OPTIMIZED ===== */
 @media (max-width: 768px) {
+
     /* Container Scaling */
     .section {
-        padding: 50px 15px; /* Slightly tighter padding to allow bigger elements */
+        padding: 50px 15px;
+        /* Slightly tighter padding to allow bigger elements */
         min-height: auto;
     }
-    
+
     .glass-container {
         padding: 40px 15px;
     }
 
     /* Overall Typography */
     .title-text {
-        font-size: 3rem; /* Bigger title */
+        font-size: 3rem;
+        /* Bigger title */
         margin-bottom: 25px;
     }
 
     .glowing-text {
         font-size: 3.5rem;
     }
-    
+
     .final-msg {
         font-size: 3.2rem;
     }
-    
+
     .poppins-text {
-        font-size: 1.3rem; /* Overall text scale up */
+        font-size: 1.3rem;
+        /* Overall text scale up */
     }
 
     /* Timeline Section */
@@ -954,9 +968,11 @@ body.night-mode .glass-card {
         left: 31px;
     }
 
-    .timeline-item, .timeline-item.left {
+    .timeline-item,
+    .timeline-item.left {
         width: 100%;
-        padding-left: 75px; /* More padding to make room for big icon */
+        padding-left: 75px;
+        /* More padding to make room for big icon */
         padding-right: 15px;
         left: 0;
         text-align: left;
@@ -965,19 +981,23 @@ body.night-mode .glass-card {
     .timeline-icon {
         left: 15px !important;
         right: auto !important;
-        transform: scale(1); /* Don't shrink icon */
+        transform: scale(1);
+        /* Don't shrink icon */
     }
-    
+
     .timeline-content {
-        padding: 25px; /* Bigger padding */
+        padding: 25px;
+        /* Bigger padding */
     }
-    
+
     .timeline-content h3 {
-        font-size: 2.2rem; /* Bigger timeline title */
+        font-size: 2.2rem;
+        /* Bigger timeline title */
     }
-    
+
     .timeline-content p {
-        font-size: 1.25rem; /* Bigger timeline text */
+        font-size: 1.25rem;
+        /* Bigger timeline text */
     }
 
     /* Cake Section */
@@ -985,17 +1005,22 @@ body.night-mode .glass-card {
         margin: 60px 0;
         height: 220px;
     }
+
     .cake {
-        transform: scale(1.1); /* Make cake physically larger */
+        transform: scale(1.1);
+        /* Make cake physically larger */
     }
+
     #cake-message {
-        font-size: 1.5rem; /* Bigger cake text */
+        font-size: 1.5rem;
+        /* Bigger cake text */
         margin-top: 30px;
     }
 
     /* Buttons */
     .romance-btn {
-        font-size: 1.3rem; /* Bigger buttons */
+        font-size: 1.3rem;
+        /* Bigger buttons */
         padding: 18px 30px;
         width: 100%;
         max-width: 320px;
@@ -1015,15 +1040,18 @@ body.night-mode .glass-card {
     .flip-card {
         width: 100%;
         max-width: 340px;
-        height: 280px; /* Taller card */
+        height: 280px;
+        /* Taller card */
     }
 
     .flip-card-front h3 {
-        font-size: 2.6rem; /* Huge front text */
+        font-size: 2.6rem;
+        /* Huge front text */
     }
-    
+
     .flip-card-back p {
-        font-size: 1.4rem; /* Readable back text */
+        font-size: 1.4rem;
+        /* Readable back text */
         line-height: 1.5;
     }
 
@@ -1035,24 +1063,28 @@ body.night-mode .glass-card {
 
     /* Envelope Region */
     .envelope-wrapper {
-        transform: scale(1.05); /* Enlarge envelope slightly above base */
+        transform: scale(1.05);
+        /* Enlarge envelope slightly above base */
         margin: 60px auto;
     }
-    
+
     .envelope-wrapper.open .letter {
-        transform: translateY(-150px) scale(1.2); /* Huge pop out */
+        transform: translateY(-150px) scale(1.2);
+        /* Huge pop out */
     }
-    
+
     .letter p {
-        font-size: 2rem; /* Bigger letter text */
+        font-size: 2rem;
+        /* Bigger letter text */
     }
 
     #love-title.open-sync {
         transform: translateY(-50px) scale(0.95);
     }
-    
+
     .instruction {
-        margin-top: 10px !important; /* Move text down */
+        margin-top: 10px !important;
+        /* Move text down */
         font-size: 1.4rem;
         position: relative;
         z-index: 10;
@@ -1060,20 +1092,24 @@ body.night-mode .glass-card {
 
     /* Game */
     .game-container {
-        padding: 25px; /* Bigger container */
+        padding: 25px;
+        /* Bigger container */
         max-width: 360px;
     }
-    
+
     #basket {
-        font-size: 3rem; /* Bigger basket */
+        font-size: 3rem;
+        /* Bigger basket */
     }
-    
+
     #score {
-        font-size: 1.8rem; /* Bigger score */
+        font-size: 1.8rem;
+        /* Bigger score */
     }
-    
+
     .falling-heart {
-        font-size: 2rem; /* Bigger hearts */
+        font-size: 2rem;
+        /* Bigger hearts */
     }
 
     /* Quotes */
@@ -1081,9 +1117,10 @@ body.night-mode .glass-card {
         padding: 40px 25px;
         max-width: 360px;
     }
-    
+
     #quote-display {
-        font-size: 2.4rem; /* Giant quote */
+        font-size: 2.4rem;
+        /* Giant quote */
         margin: 25px 0;
         line-height: 1.4;
     }
@@ -1095,36 +1132,40 @@ body.night-mode .glass-card {
         padding: 30px;
         max-width: 360px;
     }
-    
+
     .vinyl-record {
-        width: 130px; /* Bigger record */
+        width: 130px;
+        /* Bigger record */
         height: 130px;
     }
-    
+
     .player-controls {
         text-align: center;
         width: 100%;
         margin-top: 20px;
     }
-    
+
     .player-controls h3 {
-        font-size: 1.8rem; /* Bigger track name */
+        font-size: 1.8rem;
+        /* Bigger track name */
     }
-    
+
     .ctrl-btn {
         justify-content: center;
         width: 100%;
-        font-size: 1.4rem; /* Bigger play btn */
+        font-size: 1.4rem;
+        /* Bigger play btn */
     }
-    
+
     /* 100 Reasons Box */
     .reasons-scroll {
         max-height: 300px;
         padding: 20px;
     }
-    
+
     .reason-item {
-        font-size: 1.3rem; /* Bigger reason items */
+        font-size: 1.3rem;
+        /* Bigger reason items */
     }
 }
 
@@ -1137,24 +1178,107 @@ body.night-mode .glass-card {
     .glowing-text {
         font-size: 3rem;
     }
-    
+
     .envelope-wrapper {
-        transform: scale(0.9); /* Normal baseline scale */
+        transform: scale(0.9);
+        /* Normal baseline scale */
     }
-    
+
     .flip-card-front h3 {
         font-size: 2.2rem;
     }
-    
+
     .flip-card-back p {
         font-size: 1.25rem;
     }
-    
+
     .beating-heart {
-        font-size: 5rem; /* Massive heart */
+        font-size: 5rem;
+        /* Massive heart */
     }
-    
+
     .cake {
-        transform: scale(0.95); /* Fit small screens */
+        transform: scale(0.95);
+        /* Fit small screens */
     }
+}
+
+/* ===== CURSOR TRAIL ===== */
+.cursor-heart {
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    font-size: 1.2rem;
+    color: var(--accent);
+    animation: floatUpFade 1s ease-out forwards;
+}
+
+@keyframes floatUpFade {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 0.8;
+    }
+
+    100% {
+        transform: translateY(-30px) scale(0.5);
+        opacity: 0;
+    }
+}
+
+/* Night Mode Colors for specific inputs */
+body.night-mode input {
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* ===== SCRATCH COUPONS ===== */
+.coupons-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.coupon-container {
+    position: relative;
+    width: 250px;
+    height: 150px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.coupon-content {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(5px);
+    z-index: 1;
+    text-align: center;
+    padding: 10px;
+}
+
+.scratch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    cursor: crosshair;
+    transition: opacity 0.5s ease;
+}
+
+body.night-mode .coupon-content {
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+}
+
+body.night-mode .coupon-content h3,
+body.night-mode .coupon-content p {
+    color: white;
 }
