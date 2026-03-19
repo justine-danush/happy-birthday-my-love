@@ -16,13 +16,18 @@
     box-sizing: border-box;
 }
 
+html, body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+}
+
 body {
     background: linear-gradient(-45deg, var(--soft-pink), #ffc2d1, #ffe5ec, var(--lavender));
     background-size: 400% 400%;
     animation: gradientBG 15s ease infinite;
     color: var(--dark);
     font-family: 'Poppins', sans-serif;
-    overflow-x: hidden;
     scroll-behavior: smooth;
     transition: background 1s ease;
 }
@@ -119,9 +124,9 @@ body.night-mode .title-text {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 60px 20px;
+    padding: 80px 20px;
     max-width: 1000px;
-    margin: 0 auto;
+    margin: 0 auto 50px auto;
     text-align: center;
 }
 
@@ -462,6 +467,14 @@ body.night-mode .glass-card {
 .flip-card-back {
     transform: rotateY(180deg);
     background: rgba(255, 77, 109, 0.1);
+    overflow-y: auto;
+}
+.flip-card-back::-webkit-scrollbar {
+    width: 4px;
+}
+.flip-card-back::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 4px;
 }
 
 .flip-card-back p {
@@ -504,8 +517,10 @@ body.night-mode .glass-card {
 
 .polaroid img {
     width: 100%;
-    height: 200px;
+    height: auto;
+    aspect-ratio: 1 / 1.1;
     object-fit: cover;
+    object-position: top;
     border-radius: 3px;
 }
 
@@ -934,9 +949,9 @@ body.night-mode .glass-card {
 
     /* Container Scaling */
     .section {
-        padding: 50px 15px;
-        /* Slightly tighter padding to allow bigger elements */
-        min-height: auto;
+        padding: 80px 15px;
+        min-height: 100vh;
+        margin-bottom: 50px;
     }
 
     .glass-container {
@@ -1039,9 +1054,9 @@ body.night-mode .glass-card {
 
     .flip-card {
         width: 100%;
-        max-width: 340px;
-        height: 280px;
-        /* Taller card */
+        max-width: 320px;
+        height: 350px;
+        /* Much taller card to fit long text */
     }
 
     .flip-card-front h3 {
