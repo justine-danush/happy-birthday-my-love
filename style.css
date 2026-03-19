@@ -978,41 +978,34 @@ body.night-mode .glass-card {
         /* Overall text scale up */
     }
 
-    /* Timeline Section */
-    .timeline-container::after {
-        left: 31px;
-    }
-
-    .timeline-item,
-    .timeline-item.left {
-        width: 100%;
-        padding-left: 75px;
-        /* More padding to make room for big icon */
-        padding-right: 15px;
-        left: 0;
-        text-align: left;
+    /* Timeline Section - Restoring alternating layout but scaling down heavily */
+    .timeline-item {
+        padding: 5px 10px;
     }
 
     .timeline-icon {
-        left: 15px !important;
-        right: auto !important;
-        transform: scale(1);
-        /* Don't shrink icon */
+        width: 30px;
+        height: 30px;
+        font-size: 1rem;
+        right: -15px;
+        top: 20px;
+        border-width: 2px;
+    }
+
+    .timeline-item.left .timeline-icon {
+        left: -15px;
     }
 
     .timeline-content {
-        padding: 25px;
-        /* Bigger padding */
+        padding: 10px;
     }
 
     .timeline-content h3 {
-        font-size: 2.2rem;
-        /* Bigger timeline title */
+        font-size: 1.3rem;
     }
 
     .timeline-content p {
-        font-size: 1.25rem;
-        /* Bigger timeline text */
+        font-size: 0.95rem;
     }
 
     /* Cake Section */
@@ -1055,8 +1048,9 @@ body.night-mode .glass-card {
     .flip-card {
         width: 100%;
         max-width: 320px;
-        height: 350px;
-        /* Much taller card to fit long text */
+        height: auto;
+        aspect-ratio: 1 / 1;
+        /* Square box layout */
     }
 
     .flip-card-front h3 {
